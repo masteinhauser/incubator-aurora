@@ -51,8 +51,40 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.vm.provision "shell", path: "examples/vagrant/provision-mesos-master.sh"
   end
 
-  config.vm.define "mesos-slave" do |slave|
-    slave.vm.network :private_network, ip: "192.168.33.4"
+  config.vm.define "mesos-slave1" do |slave|
+    slave.vm.network :private_network, ip: "192.168.33.11"
+    slave.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "512"]
+    end
+    slave.vm.provision "shell", path: "examples/vagrant/provision-mesos-slave.sh"
+  end
+
+  config.vm.define "mesos-slave2" do |slave|
+    slave.vm.network :private_network, ip: "192.168.33.12"
+    slave.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "512"]
+    end
+    slave.vm.provision "shell", path: "examples/vagrant/provision-mesos-slave.sh"
+  end
+
+  config.vm.define "mesos-slave3" do |slave|
+    slave.vm.network :private_network, ip: "192.168.33.13"
+    slave.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "512"]
+    end
+    slave.vm.provision "shell", path: "examples/vagrant/provision-mesos-slave.sh"
+  end
+
+  config.vm.define "mesos-slave4" do |slave|
+    slave.vm.network :private_network, ip: "192.168.33.14"
+    slave.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "512"]
+    end
+    slave.vm.provision "shell", path: "examples/vagrant/provision-mesos-slave.sh"
+  end
+
+  config.vm.define "mesos-slave5" do |slave|
+    slave.vm.network :private_network, ip: "192.168.33.15"
     slave.vm.provider :virtualbox do |vb|
       vb.customize ["modifyvm", :id, "--memory", "512"]
     end
